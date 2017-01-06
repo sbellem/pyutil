@@ -51,8 +51,6 @@ data_files = [
     (os.path.join(u'pyutil', u'data'), [os.path.join(u'pyutil', u'data', u'wordlist.txt')])
     ]
 
-install_requires=[u'zbase32 >= 1.0']
-
 readmetext = io.open(u'README.rst').read()
 
 setup(name=PKG,
@@ -67,8 +65,11 @@ setup(name=PKG,
       packages=find_packages(),
       include_package_data=True,
       data_files=data_files,
-      extras_require={u'jsonutil': [u'simplejson >= 2.1.0',]},
-      install_requires=install_requires,
+      install_requires=[],
+      extras_require={
+          u'jsonutil': [u'simplejson >= 2.1.0',],
+          u'randcookie': [u'zbase32 >= 1.0',],
+          },
       classifiers=trove_classifiers,
       entry_points = {
           u'console_scripts': [
