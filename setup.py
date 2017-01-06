@@ -6,7 +6,7 @@
 #
 # This file is part of pyutil; see README.rst for licensing terms.
 
-import os, re, sys
+import os, io, re, sys
 
 from setuptools import find_packages, setup
 
@@ -23,6 +23,10 @@ trove_classifiers=[
     u"Programming Language :: Python",
     u"Programming Language :: Python :: 2",
     u"Programming Language :: Python :: 2.7",
+    u"Programming Language :: Python :: 3",
+    u"Programming Language :: Python :: 3.3",
+    u"Programming Language :: Python :: 3.4",
+    u"Programming Language :: Python :: 3.5",
     u"Topic :: Utilities",
     u"Topic :: Software Development :: Libraries",
     ]
@@ -49,16 +53,13 @@ data_files = [
 
 install_requires=[u'zbase32 >= 1.0']
 
-readmetext_bytes = open(u'README.rst').read()
-readmetext_unicode = readmetext_bytes.decode('utf-8')
-while readmetext_unicode[0] == u'\ufeff':
-    readmetext_unicode = readmetext_unicode[1:]
+readmetext = io.open(u'README.rst').read()
 
 setup(name=PKG,
       version=versioneer.get_version(),
       cmdclass=versioneer.get_cmdclass(),
       description=u'a collection of utilities for Python programmers',
-      long_description=readmetext_unicode,
+      long_description=readmetext,
       author=u"Zooko Wilcox-O'Hearn",
       author_email=u'zookog@gmail.com',
       url=u'https://tahoe-lafs.org/trac/' + PKG,
